@@ -1,10 +1,11 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "functions/server.js",
   "scripts": {
+    "build": "netlify deploy --prod",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node functions/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +15,9 @@
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.5.2"
+    "mongoose": "^8.5.2",
+    "netlify-cli": "^17.34.0",
+    "netlify-lambda": "^2.0.16",
+    "serverless-http": "^3.2.0"
   }
 }
