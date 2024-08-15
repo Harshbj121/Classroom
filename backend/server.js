@@ -7,7 +7,6 @@ const ClassroomRoutes = require('./Routes/ClassroomRoutes')
 const URL = 'mongodb://localhost:27017/classroom';
 const defaultUser = require('./Routes/DefaultUser')
 
-
 mongoose.connect(URL)
 .then(() => {
     console.log('Connected to MongoDB');
@@ -24,6 +23,6 @@ defaultUser();
 app.use("/auth", UserRoutes);
 app.use("/api", ClassroomRoutes);
 
-app.listen(5000, () => {
+app.use(5000, () => {
     console.log('Server running on 5000')
 })
