@@ -12,6 +12,7 @@ const defaultUser = require('./Routes/DefaultUser')
 mongoose.connect(MONGODB_URI)
 .then(() => {
     console.log('Connected to MongoDB');
+    defaultUser();
 })
 .catch((error) => {
     console.error('Error connecting to MongoDB:', error);
@@ -19,8 +20,10 @@ mongoose.connect(MONGODB_URI)
 
 app.use(cors());
 app.use(express.json());
+app.get('/test', (req,res)=>{
+    res.send("Hello World")
+})
 
-defaultUser();
 
 app.use("/auth", UserRoutes);
 app.use("/api", ClassroomRoutes);

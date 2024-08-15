@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios';
 import Swal from 'sweetalert2'
-const API_BASE_URL = "http://localhost:5000";
 import { useNavigate } from 'react-router-dom';
+import { API } from '../config';
 
 const StudentDashboard = () => {
     const navigate = useNavigate()
@@ -16,7 +16,7 @@ const StudentDashboard = () => {
         if (!token) {
             navigate('/login')
         }
-        axios.get(`${API_BASE_URL}/auth/alldata/${classId}`, {
+        axios.get(`${API}/auth/alldata/${classId}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

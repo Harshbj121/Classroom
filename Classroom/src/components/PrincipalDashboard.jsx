@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import Swal from 'sweetalert2'
-const API_BASE_URL = "http://localhost:5000";
 import { useNavigate } from 'react-router-dom';
+import { API } from "../config";
 
 const PrincipalDashboard = () => {
     const navigate = useNavigate()
@@ -32,7 +32,7 @@ const PrincipalDashboard = () => {
         if (!token) {
             navigate('/login')
         }
-        axios.get(`${API_BASE_URL}/auth/alldata`, {
+        axios.get(`${API}/auth/alldata`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -56,7 +56,7 @@ const PrincipalDashboard = () => {
 
     const handleDelete = (id) => {
         const token = localStorage.getItem('token')
-        axios.delete(`${API_BASE_URL}/auth/deleteuser/${id}`, {
+        axios.delete(`${API}/auth/deleteuser/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -102,7 +102,7 @@ const PrincipalDashboard = () => {
         if (!token) {
             navigate('/login')
         }
-        axios.put(`${API_BASE_URL}/auth/updateuser/${selectedUserId}`, updatedUser, {
+        axios.put(`${API}/auth/updateuser/${selectedUserId}`, updatedUser, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -127,7 +127,7 @@ const PrincipalDashboard = () => {
         if (!token) {
             navigate('/login')
         }
-        axios.post(`${API_BASE_URL}/api/createclassroom`, requestData, {
+        axios.post(`${API}/api/createclassroom`, requestData, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -152,7 +152,7 @@ const PrincipalDashboard = () => {
         if (!token) {
             navigate('/login')
         }
-        axios.post(`${API_BASE_URL}/auth/register`, requestData, {
+        axios.post(`${API}/auth/register`, requestData, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

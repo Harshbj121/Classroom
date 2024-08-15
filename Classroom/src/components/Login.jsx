@@ -2,7 +2,7 @@ import { useState } from "react"
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios';
 import Swal from 'sweetalert2'
-const API_BASE_URL = "http://localhost:5000";
+import { API } from "../config";
 
 const Login = () => {
     const [Email, setEmail] = useState('')
@@ -12,7 +12,7 @@ const Login = () => {
     const handleLogin = (event) => {
         event.preventDefault();
         const requestData = { Email: Email, Password: Password };
-        axios.post(`${API_BASE_URL}/auth/login`, requestData)
+        axios.post(`${API}/auth/login`, requestData)
             .then((result) => {
                 if (result) {
                     console.log(result);
