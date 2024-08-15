@@ -4,10 +4,10 @@ const mongoose = require('mongoose');
 const cors = require('cors')
 const UserRoutes = require('./Routes/UserRoutes')
 const ClassroomRoutes = require('./Routes/ClassroomRoutes')
-const URL = 'mongodb://localhost:27017/classroom';
+const MONGODB_URI= `mongodb+srv://harshbj121:CUw6nKspkusFr2je@classroom.6tcxj.mongodb.net/?retryWrites=true&w=majority&appName=Classroom`
 const defaultUser = require('./Routes/DefaultUser')
 
-mongoose.connect(URL)
+mongoose.connect(MONGODB_URI)
 .then(() => {
     console.log('Connected to MongoDB');
 })
@@ -23,6 +23,6 @@ defaultUser();
 app.use("/auth", UserRoutes);
 app.use("/api", ClassroomRoutes);
 
-app.use(5000, () => {
+app.listen(5000, () => {
     console.log('Server running on 5000')
 })
